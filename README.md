@@ -1,4 +1,4 @@
-# Whisper
+# Whisper_plus
 
 [[Blog]](https://openai.com/blog/whisper)
 [[Paper]](https://arxiv.org/abs/2212.04356)
