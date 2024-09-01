@@ -109,6 +109,7 @@ class DecodingOptions:
     # timestamp sampling options
     without_timestamps: bool = False  # use <|notimestamps|> to sample text tokens only
     max_initial_timestamp: Optional[float] = 1.0
+    timestamp_frequency_multiplier: int = 1
 
     # implementation details
     fp16: bool = True  # use fp16 for most of the calculation
@@ -444,10 +445,12 @@ class ApplyTimestampRules(LogitFilter):
         tokenizer: Tokenizer,
         sample_begin: int,
         max_initial_timestamp_index: Optional[int],
+        timestamp_frequency_multiplier: int = 1,
     ):
         self.tokenizer = tokenizer
         self.sample_begin = sample_begin
         self.max_initial_timestamp_index = max_initial_timestamp_index
+        self.timestamp_frequency_multiplier = timestamp_frequency_multiplier
 
     def apply(self, logits: Tensor, tokens: Tensor):
         # suppress <|notimestamps|> which is handled by without_timestamps
@@ -501,7 +504,7 @@ class ApplyTimestampRules(LogitFilter):
                 dim=-1
             )
             max_text_token_logprob = logprobs[k, : self.tokenizer.timestamp_begin].max()
-            if timestamp_logprob > max_text_token_logprob:
+            if timestamp_logprob > max_text_token_logprob * (1 / self.timestamp_frequency_multiplier):
                 logits[k, : self.tokenizer.timestamp_begin] = -np.inf
 
 
@@ -565,7 +568,7 @@ class DecodingTask:
                 )
             self.logit_filters.append(
                 ApplyTimestampRules(
-                    tokenizer, self.sample_begin, max_initial_timestamp_index
+                    tokenizer, self.sample_begin, max_initial_timestamp_index, options.timestamp_frequency_multiplier
                 )
             )
 
