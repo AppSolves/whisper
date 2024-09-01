@@ -2,32 +2,32 @@
 
 [[Blog]](https://openai.com/blog/whisper)
 [[Paper]](https://arxiv.org/abs/2212.04356)
-[[Model card]](https://github.com/openai/whisper/blob/main/model-card.md)
-[[Colab example]](https://colab.research.google.com/github/openai/whisper/blob/master/notebooks/LibriSpeech.ipynb)
+[[Model card]](https://github.com/AppSolves/whisper_plus/blob/main/model-card.md)
+[[Colab example]](https://colab.research.google.com/github/AppSolves/whisper_plus/blob/master/notebooks/LibriSpeech.ipynb)
 
-Whisper is a general-purpose speech recognition model. It is trained on a large dataset of diverse audio and is also a multitasking model that can perform multilingual speech recognition, speech translation, and language identification.
+Whisper_plus is a fork of Whisper, a general-purpose speech recognition model. It is trained on a large dataset of diverse audio and is also a multitasking model that can perform multilingual speech recognition, speech translation, and language identification. In addition to the original Whisper, Whisper_plus has a few additional options.
 
 
 ## Approach
 
-![Approach](https://raw.githubusercontent.com/openai/whisper/main/approach.png)
+![Approach](https://raw.githubusercontent.com/AppSolves/whisper_plus/main/approach.png)
 
 A Transformer sequence-to-sequence model is trained on various speech processing tasks, including multilingual speech recognition, speech translation, spoken language identification, and voice activity detection. These tasks are jointly represented as a sequence of tokens to be predicted by the decoder, allowing a single model to replace many stages of a traditional speech-processing pipeline. The multitask training format uses a set of special tokens that serve as task specifiers or classification targets.
 
 
 ## Setup
 
-We used Python 3.9.9 and [PyTorch](https://pytorch.org/) 1.10.1 to train and test our models, but the codebase is expected to be compatible with Python 3.8-3.11 and recent PyTorch versions. The codebase also depends on a few Python packages, most notably [OpenAI's tiktoken](https://github.com/openai/tiktoken) for their fast tokenizer implementation. You can download and install (or update to) the latest release of Whisper with the following command:
+We used Python 3.9.9 and [PyTorch](https://pytorch.org/) 1.10.1 to train and test our models, but the codebase is expected to be compatible with Python 3.8-3.12 and recent PyTorch versions. The project is NOT compatible with NumPy >2.0.0 yet. The codebase also depends on a few Python packages, most notably [OpenAI's tiktoken](https://github.com/openai/tiktoken) for their fast tokenizer implementation. You can download and install (or update to) the latest release of Whisper with the following command:
 
-    pip install -U openai-whisper
+    pip install -U whisper_plus
 
 Alternatively, the following command will pull and install the latest commit from this repository, along with its Python dependencies:
 
-    pip install git+https://github.com/openai/whisper.git 
+    pip install git+https://github.com/AppSolves/whisper_plus.git 
 
 To update the package to the latest version of this repository, please run:
 
-    pip install --upgrade --no-deps --force-reinstall git+https://github.com/openai/whisper.git
+    pip install --upgrade --no-deps --force-reinstall git+https://github.com/AppSolves/whisper_plus.git
 
 It also requires the command-line tool [`ffmpeg`](https://ffmpeg.org/) to be installed on your system, which is available from most package managers:
 
@@ -93,7 +93,7 @@ Run the following to view all available options:
 
     whisper --help
 
-See [tokenizer.py](https://github.com/openai/whisper/blob/main/whisper/tokenizer.py) for the list of all available languages.
+See [tokenizer.py](https://github.com/AppSolves/whisper_plus/blob/main/whisper/tokenizer.py) for the list of all available languages.
 
 
 ## Python usage
@@ -138,9 +138,9 @@ print(result.text)
 
 ## More examples
 
-Please use the [🙌 Show and tell](https://github.com/openai/whisper/discussions/categories/show-and-tell) category in Discussions for sharing more example usages of Whisper and third-party extensions such as web demos, integrations with other tools, ports for different platforms, etc.
+Please use the [🙌 Show and tell](https://github.com/AppSolves/whisper_plus/discussions/categories/show-and-tell) category in Discussions for sharing more example usages of Whisper and third-party extensions such as web demos, integrations with other tools, ports for different platforms, etc.
 
 
 ## License
 
-Whisper's code and model weights are released under the MIT License. See [LICENSE](https://github.com/openai/whisper/blob/main/LICENSE) for further details.
+Whisper's code and model weights are released under the MIT License. See [LICENSE](https://github.com/AppSolves/whisper_plus/blob/main/LICENSE) for further details.

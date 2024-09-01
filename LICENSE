@@ -1,9 +1,9 @@
 # License
 
-## Original License
-
 This project was forked from https://github.com/openai/whisper.
 The original Whisper project is licensed under the MIT License:
+
+## Original License
 
 MIT License
 
@@ -17,12 +17,15 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ## Modifications
 
-This repository is a modified version of the Whisper model originally developed by OpenAI.
+This repository ("Whisper_plus") is a modified version of the Whisper model originally developed by OpenAI.
 The modifications include changes to the timestamp generation logic to produce shorter segments and more frequent timestamps.
 
 ### Summary of Modifications:
 
-- Added option to change segment length in `transcribe()` function
+- Modified LICENSE file
+- Added option to change segment length in `DecodingOptions` class
+- Changes, to README.md, requirements.txt, .gitignore, etc.
+- Changes in view of the PyPI package name
 
 ### Ownership of Modifications
 

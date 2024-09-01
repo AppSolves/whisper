@@ -16,16 +16,17 @@ if sys.platform.startswith("linux") and platform.machine() == "x86_64":
     requirements.append("triton>=2.0.0,<3")
 
 setup(
-    name="openai-whisper",
+    name="whisper_plus",
     py_modules=["whisper"],
     version=read_version(),
-    description="Robust Speech Recognition via Large-Scale Weak Supervision",
+    description="Robust Speech Recognition via Large-Scale Weak Supervision | ",
     long_description=open("README.md", encoding="utf-8").read(),
     long_description_content_type="text/markdown",
     readme="README.md",
     python_requires=">=3.8",
-    author="OpenAI",
-    url="https://github.com/openai/whisper",
+    author="OpenAI (orginal), AppSolves (this fork)",
+    maintainer="AppSolves",
+    url="https://github.com/AppSolves/whisper_plus",
     license="MIT",
     packages=find_packages(exclude=["tests*"]),
     install_requires=[
